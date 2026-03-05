@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RepetitionExercise from "./components/RepetitionExercise";
 import DurationExercise from "./components/DurationExercise";
+import WeightExercise from "./components/WeightExercise";
 
 export default function App() {
   const [selectedExercise, setSelectedExercise] = useState(null);
@@ -9,7 +10,8 @@ export default function App() {
     { name: "Push-Ups", type: "repetition" },
     { name: "Sit-Ups", type: "repetition" },
     { name: "Plank", type: "duration" },
-    { name: "Wall-Sit", type: "duration" }
+    { name: "Wall-Sit", type: "duration" },
+    { name: "Squats", type: "weight" }
   ];
 
   const goBack = () => {
@@ -32,6 +34,13 @@ export default function App() {
           goBack={goBack}
         />
       );
+    } else if (selectedExercise.type === "weight") {
+    renderedComponent = (
+      <WeightExercise
+        name={selectedExercise.name}
+        goBack={goBack}
+      />
+    );
     }
   }
 
